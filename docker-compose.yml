@@ -1,0 +1,19 @@
+services:
+  book2sft:
+    build: .
+    container_name: book2sft
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./data/jobs:/data/jobs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8088/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s

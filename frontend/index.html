@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book2SFT</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">BOOK2SFT</p>
+        <h1>تبدیل کتاب به دادهٔ آموزشی</h1>
+        <p class="muted">نسخهٔ اول: PDF → OCR/Chunker → JSONL، همراه با زمان‌بندی و پیشرفت زنده.</p>
+      </div>
+      <span id="health" class="pill">در حال بررسی…</span>
+    </section>
+
+    <section class="card upload-card">
+      <form id="uploadForm">
+        <label class="drop" for="pdfFile">
+          <strong>فایل PDF را انتخاب کنید</strong>
+          <span id="fileName">هنوز فایلی انتخاب نشده</span>
+          <input id="pdfFile" name="pdf_file" type="file" accept="application/pdf" required />
+        </label>
+        <button id="submitBtn" type="submit">شروع پردازش</button>
+      </form>
+    </section>
+
+    <section id="jobPanel" class="card hidden">
+      <div class="row between">
+        <div>
+          <h2 id="jobTitle">Job</h2>
+          <p id="jobMessage" class="muted">—</p>
+        </div>
+        <span id="jobStatus" class="pill">queued</span>
+      </div>
+
+      <div class="progress-block">
+        <div class="row between"><span>پیشرفت کل</span><strong id="overallPct">0%</strong></div>
+        <div class="bar"><div id="overallBar" class="bar-fill"></div></div>
+      </div>
+
+      <div class="stats">
+        <div><span>مرحله</span><strong id="stageName">queued</strong></div>
+        <div><span>زمان سپری‌شده</span><strong id="elapsed">0.0s</strong></div>
+        <div><span>ETA</span><strong id="eta">—</strong></div>
+      </div>
+
+      <h3>زمان‌بندی مراحل</h3>
+      <div id="timings" class="timings"></div>
+
+      <div id="downloads" class="downloads hidden">
+        <a id="chunksLink" class="button secondary" href="#">دانلود chunks.jsonl</a>
+        <a id="ocrLink" class="button secondary" href="#">دانلود OCR JSON</a>
+        <a id="logLink" class="button secondary" href="#">دانلود Chunker Log</a>
+      </div>
+
+      <pre id="errorBox" class="error hidden"></pre>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
