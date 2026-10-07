@@ -10,26 +10,31 @@
   <main class="shell">
     <section class="hero">
       <div>
-        <p class="eyebrow">BOOK2SFT</p>
-        <h1>تبدیل کتاب به دادهٔ آموزشی</h1>
-        <p class="muted">نسخهٔ اول: PDF → OCR/Chunker → JSONL، همراه با زمان‌بندی و پیشرفت زنده.</p>
+        <p class="eyebrow">BOOK2SFT · FULL PIPELINE</p>
+        <h1>تبدیل کتاب به دیتاست SFT</h1>
+        <p class="muted">PDF → OCR → Semantic Chunker → SFT Generator → Book Selection → JSONL + Review PDF</p>
       </div>
-      <span id="health" class="pill">در حال بررسی…</span>
+      <span id="health" class="pill">در حال بررسی سرویس‌ها…</span>
     </section>
 
     <section class="card upload-card">
       <form id="uploadForm">
         <label class="drop" for="pdfFile">
-          <strong>فایل PDF را انتخاب کنید</strong>
+          <strong>فایل PDF کتاب را انتخاب کنید</strong>
           <span id="fileName">هنوز فایلی انتخاب نشده</span>
           <input id="pdfFile" name="pdf_file" type="file" accept="application/pdf" required />
         </label>
-        <button id="submitBtn" type="submit">شروع پردازش</button>
+        <div class="form-grid">
+          <label><span>عنوان کتاب (اختیاری)</span><input id="bookTitle" type="text" placeholder="از نام فایل استفاده می‌شود" /></label>
+          <label><span>کتگوری (اختیاری)</span><input id="category" type="text" placeholder="مثلاً فلسفه" /></label>
+          <label><span>Domain سرویس SFT</span><input id="domain" type="text" placeholder="general" /></label>
+        </div>
+        <button id="submitBtn" type="submit">شروع کل Pipeline</button>
       </form>
     </section>
 
     <section id="jobPanel" class="card hidden">
-      <div class="row between">
+      <div class="row between wrap">
         <div>
           <h2 id="jobTitle">Job</h2>
           <p id="jobMessage" class="muted">—</p>
@@ -38,25 +43,55 @@
       </div>
 
       <div class="progress-block">
-        <div class="row between"><span>پیشرفت کل</span><strong id="overallPct">0%</strong></div>
+        <div class="row between"><span>پیشرفت کل Pipeline</span><strong id="overallPct">0%</strong></div>
         <div class="bar"><div id="overallBar" class="bar-fill"></div></div>
+        <small class="muted">درصد کل، برآورد وزنی مراحل است؛ درصد داخل هر مرحله از work counter واقعی سرویس‌ها می‌آید.</small>
       </div>
 
       <div class="stats">
-        <div><span>مرحله</span><strong id="stageName">queued</strong></div>
-        <div><span>زمان سپری‌شده</span><strong id="elapsed">0.0s</strong></div>
+        <div><span>مرحله فعلی</span><strong id="stageName">queued</strong></div>
+        <div><span>پیشرفت مرحله</span><strong id="stagePct">0%</strong></div>
+        <div><span>زمان کل</span><strong id="elapsed">0.0s</strong></div>
         <div><span>ETA</span><strong id="eta">—</strong></div>
       </div>
 
-      <h3>زمان‌بندی مراحل</h3>
+      <h3>زمان هر مرحله</h3>
       <div id="timings" class="timings"></div>
 
-      <div id="downloads" class="downloads hidden">
-        <a id="chunksLink" class="button secondary" href="#">دانلود chunks.jsonl</a>
-        <a id="ocrLink" class="button secondary" href="#">دانلود OCR JSON</a>
-        <a id="logLink" class="button secondary" href="#">دانلود Chunker Log</a>
-      </div>
+      <section id="sftPanel" class="subcard hidden">
+        <div class="row between wrap">
+          <div>
+            <p class="eyebrow">DATA GENERATOR</p>
+            <h3>جزئیات SFT Generator</h3>
+          </div>
+          <strong id="sftChunks">0 / 0 chunks</strong>
+        </div>
+        <div class="mini-grid">
+          <div><span>Active chunks</span><strong id="sftActive">0</strong></div>
+          <div><span>Live targets</span><strong id="sftTargets">—</strong></div>
+          <div><span>Generated pairs</span><strong id="sftGenerated">0</strong></div>
+          <div><span>Quality pass</span><strong id="sftQuality">0</strong></div>
+          <div><span>Selected final</span><strong id="sftSelected">0</strong></div>
+          <div><span>Failed chunks</span><strong id="sftFailed">0</strong></div>
+        </div>
+        <div id="currentTargets" class="current-targets"></div>
+        <details open>
+          <summary>Timing زیرماژول‌های Data Generator</summary>
+          <div id="sftTimings" class="timings compact"></div>
+        </details>
+      </section>
 
+      <section id="resultSummary" class="subcard hidden">
+        <h3>خروجی نهایی</h3>
+        <div class="mini-grid">
+          <div><span>Chunks</span><strong id="resultChunks">0</strong></div>
+          <div><span>All evaluated pairs</span><strong id="resultAllPairs">0</strong></div>
+          <div><span>Selected SFT pairs</span><strong id="resultSelected">0</strong></div>
+        </div>
+        <div id="warnings" class="warning hidden"></div>
+      </section>
+
+      <div id="downloads" class="downloads hidden"></div>
       <pre id="errorBox" class="error hidden"></pre>
     </section>
   </main>
