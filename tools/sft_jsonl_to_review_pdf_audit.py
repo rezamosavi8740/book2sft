@@ -17,6 +17,7 @@ import html
 import json
 import os
 import re
+import shutil
 import sys
 import tempfile
 from dataclasses import dataclass
@@ -506,11 +507,20 @@ def write_pdf(
     regular_font: Path,
     bold_font: Path,
 ) -> None:
+    # The final PDF is written atomically with os.replace().  The temporary
+    # file therefore MUST live on the same filesystem as the destination.
+    # In Docker, /tmp and /data are commonly different mounts; creating the
+    # temporary directory under output.parent avoids EXDEV /
+    # "Invalid cross-device link" when publishing the finished PDF.
+    output = output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     a4 = fitz.paper_rect("a4")
     content_rect = fitz.Rect(38, 42, a4.width - 38, a4.height - 42)
 
-    with tempfile.TemporaryDirectory(prefix="sft-review-pdf-") as tmp_name:
+    with tempfile.TemporaryDirectory(
+        prefix=".sft-review-pdf-",
+        dir=str(output.parent),
+    ) as tmp_name:
         tmp_dir = Path(tmp_name)
         regular_name, bold_name, archive = copy_fonts_to_temp(
             regular_font, bold_font, tmp_dir
@@ -666,7 +676,24 @@ def write_pdf(
         final_temp = tmp_dir / "final.pdf"
         document.save(final_temp, garbage=4, deflate=True)
         document.close()
-        os.replace(final_temp, output)
+
+        # `tmp_dir` is deliberately created under output.parent, so the normal
+        # path below is an atomic rename on one filesystem. Keep a defensive
+        # cross-device fallback as well: older images or unusual volume setups
+        # must never fail the whole Book2SFT job merely because EXDEV is raised.
+        try:
+            os.replace(final_temp, output)
+        except OSError as exc:
+            if getattr(exc, "errno", None) != 18:  # EXDEV: invalid cross-device link
+                raise
+            publish_temp = output.with_name(f".{output.name}.{os.getpid()}.publish.tmp")
+            try:
+                shutil.copyfile(final_temp, publish_temp)
+                with publish_temp.open("rb") as fh:
+                    os.fsync(fh.fileno())
+                os.replace(publish_temp, output)
+            finally:
+                publish_temp.unlink(missing_ok=True)
 
 
 def validate_book_pdf(path: Path | None, items: list[ReviewItem]) -> list[str]:

@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import copy
 import json
+import logging
 import os
 import shutil
 import sys
@@ -61,6 +62,8 @@ SFT_REQUEST_RETRIES = max(0, env_int("SFT_REQUEST_RETRIES", 0))
 SFT_SOURCE_LANGUAGE = os.getenv("SFT_SOURCE_LANGUAGE", "fa")
 SFT_TARGET_LANGUAGE = os.getenv("SFT_TARGET_LANGUAGE", "fa")
 SFT_DEFAULT_DOMAIN = os.getenv("SFT_DEFAULT_DOMAIN", "general")
+SFT_BOOK_SELECTION_TIMEOUT_SEC = max(30.0, env_float("SFT_BOOK_SELECTION_TIMEOUT_SEC", 900.0))
+logger = logging.getLogger("book2sft.sft")
 PDF_SCRIPT = Path(os.getenv("SFT_REVIEW_PDF_SCRIPT", "/app/tools/sft_jsonl_to_review_pdf_audit.py"))
 
 
@@ -68,6 +71,7 @@ STAGE_ORDER = [
     "queued",
     "upload",
     "chunker_submit",
+    "chunker_waiting",
     "ocr",
     "normalizing",
     "chunking",
@@ -92,6 +96,7 @@ STAGE_ORDER = [
 STAGE_WEIGHTS = {
     "upload": 0.02,
     "chunker_submit": 0.01,
+    "chunker_waiting": 0.0,
     "ocr": 0.10,
     "normalizing": 0.02,
     "chunking": 0.03,
@@ -511,13 +516,26 @@ class JobManager:
                     await self.fail(job, "CHUNKER_STATUS_FAILED", status_resp.text)
                     return
                 downstream = status_resp.json()
-                ds_status = str(downstream.get("status", "running"))
-                ds_stage = str(downstream.get("stage") or "chunking")
+                ds_status = str(downstream.get("status") or "queued").strip().lower()
+                ds_stage = str(downstream.get("stage") or "queued").strip().lower()
                 try:
                     ds_progress = float(downstream.get("progress")) if downstream.get("progress") is not None else 0.0
                 except Exception:
                     ds_progress = 0.0
-                mapped_stage = CHUNKER_STAGE_MAP.get(ds_stage, "chunking")
+                # A queued Chunker job has NOT completed OCR or normalization.
+                # Keep the wait separate from OCR/Chunker execution and timing.
+                if ds_status in {"queued", "pending"} or ds_stage in {"queued", "pending"}:
+                    mapped_stage = "chunker_waiting"
+                    ds_progress = 0.0
+                elif ds_status == "completed":
+                    mapped_stage = "chunker_finalizing"
+                else:
+                    # Never pretend that an unknown downstream stage is chunking.
+                    # Preserve the last recognized running stage if present.
+                    mapped_stage = CHUNKER_STAGE_MAP.get(ds_stage) or (
+                        last_stage if last_stage and last_stage != "chunker_waiting"
+                        else "chunker_waiting"
+                    )
                 last_stage = mapped_stage
                 await self.set_stage(
                     job,
@@ -759,11 +777,13 @@ class JobManager:
                 result = {"error": True, "message": "request_not_started"}
                 for attempt in range(SFT_REQUEST_RETRIES + 1):
                     try:
+                        logger.info("SFT /run START job=%s chunk=%s attempt=%d", job.job_id, chunk_id, attempt + 1)
                         response = await client.post(
                             f"{SFT_ORCHESTRATOR_BASE_URL}/run",
                             json=payload,
                             timeout=SFT_TIMEOUT_SEC,
                         )
+                        logger.info("SFT /run END job=%s chunk=%s status=%d elapsed=%.1fs", job.job_id, chunk_id, response.status_code, time.perf_counter() - started)
                         if response.status_code >= 400:
                             result = {
                                 "error": True,
@@ -774,6 +794,7 @@ class JobManager:
                             result = response.json()
                             break
                     except Exception as exc:
+                        logger.exception("SFT /run ERROR job=%s chunk=%s attempt=%d elapsed=%.1fs", job.job_id, chunk_id, attempt + 1, time.perf_counter() - started)
                         result = {"error": True, "exception": f"{type(exc).__name__}: {exc}"}
                     if attempt < SFT_REQUEST_RETRIES:
                         await asyncio.sleep(min(8.0, 1.5 * (attempt + 1)))
@@ -925,8 +946,15 @@ class JobManager:
                 "max_pairs": book_budget,
                 "max_per_concept": SFT_MAX_PER_CONCEPT,
             }
-            async with httpx.AsyncClient(timeout=timeout) as client:
-                response = await client.post(f"{SFT_ORCHESTRATOR_BASE_URL}/select_instruction_book", json=payload)
+            logger.info("SFT selection START job=%s candidates=%d budget=%d", job.job_id, len(candidates), book_budget)
+            try:
+                async with httpx.AsyncClient(timeout=httpx.Timeout(SFT_BOOK_SELECTION_TIMEOUT_SEC, connect=30.0)) as client:
+                    response = await client.post(f"{SFT_ORCHESTRATOR_BASE_URL}/select_instruction_book", json=payload)
+            except httpx.HTTPError as exc:
+                logger.exception("SFT selection ERROR job=%s elapsed=%.1fs", job.job_id, time.monotonic() - selection_started)
+                await self.fail(job, "SFT_BOOK_SELECTION_REQUEST_FAILED", f"{type(exc).__name__}: {exc}")
+                return
+            logger.info("SFT selection END job=%s status=%d elapsed=%.1fs", job.job_id, response.status_code, time.monotonic() - selection_started)
             if response.status_code >= 400:
                 await self.fail(job, "SFT_BOOK_SELECTION_FAILED", response.text)
                 return

@@ -1,10 +1,44 @@
 const $ = (id) => document.getElementById(id);
 let source = null;
 let currentJob = null;
+let activeJobId = null;
+let statusPollInFlight = false;
+let lastStatusFetchAt = 0;
+
+// Time must advance locally even when the backend sends no new progress events.
+function liveElapsed(startedAt, completedAt, fallback = 0) {
+  if (!startedAt) return Number(fallback) || 0;
+  const start = Date.parse(startedAt);
+  const end = completedAt ? Date.parse(completedAt) : Date.now();
+  if (!Number.isFinite(start) || !Number.isFinite(end)) return Number(fallback) || 0;
+  return Math.max(0, (end - start) / 1000);
+}
+
+async function refreshJobStatus(jobId) {
+  if (!jobId || statusPollInFlight) return;
+  statusPollInFlight = true;
+  try {
+    const response = await fetch(`/v1/jobs/${encodeURIComponent(jobId)}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const state = await response.json();
+    if (activeJobId !== jobId) return;
+    lastStatusFetchAt = Date.now();
+    render(state);
+    if (state.status === 'completed' || state.status === 'failed') {
+      if (source) source.close();
+    }
+  } catch (error) {
+    console.warn('Job status polling failed:', error);
+  } finally {
+    statusPollInFlight = false;
+  }
+}
+
 
 const STAGE_LABELS = {
   upload: "آپلود PDF",
   chunker_submit: "ارسال به Chunker",
+  chunker_waiting: "انتظار در صف Chunker",
   ocr: "OCR",
   normalizing: "نرمال‌سازی OCR",
   chunking: "آماده‌سازی Chunker",
@@ -137,7 +171,7 @@ function render(job) {
   $("overallPct").textContent = `${pct.toFixed(1)}%`;
   $("overallBar").style.width = `${pct}%`;
   $("stagePct").textContent = `${stagePct.toFixed(1)}%`;
-  $("elapsed").textContent = seconds(job.total_elapsed_sec);
+  $("elapsed").textContent = seconds(liveElapsed(job.started_at, job.completed_at, job.total_elapsed_sec));
   $("eta").textContent = seconds(job.eta_sec);
 
   const timings = job.timings || {};
@@ -145,7 +179,7 @@ function render(job) {
     <div class="timing-row">
       <strong>${STAGE_LABELS[name] || name}</strong>
       <span class="state">${t.status || "waiting"}</span>
-      <span>${seconds(t.elapsed_sec || 0)}</span>
+      <span>${seconds(t.status === "running" ? liveElapsed(t.started_at, t.finished_at, t.elapsed_sec) : (t.elapsed_sec || 0))}</span>
     </div>
   `).join("") || '<p class="muted">هنوز timing ثبت نشده است.</p>';
 
@@ -218,18 +252,18 @@ $("uploadForm").addEventListener("submit", async (e) => {
 });
 
 function connectEvents(jobId) {
+  activeJobId = jobId;
   if (source) source.close();
+  refreshJobStatus(jobId);
   source = new EventSource(`/v1/jobs/${jobId}/events`);
   source.onmessage = (e) => {
     const event = JSON.parse(e.data);
     if (event.job) render(event.job);
     if (event.type === 'completed' || event.type === 'failed') source.close();
   };
-  source.onerror = async () => {
-    try {
-      const r = await fetch(`/v1/jobs/${jobId}`);
-      if (r.ok) render(await r.json());
-    } catch (_) {}
+  source.onerror = () => {
+    // EventSource reconnects automatically; independent polling covers missed events.
+    refreshJobStatus(jobId);
   };
 }
 
@@ -237,3 +271,11 @@ checkHealth();
 setInterval(() => {
   if (currentJob && currentJob.status === 'running') render(currentJob);
 }, 1000);
+
+// SSE can disconnect or only emit keepalive pings; never rely on it as the
+// sole source of job state. A separate polling loop retrieves authoritative data.
+setInterval(() => {
+  if (activeJobId && (!currentJob || !['completed', 'failed'].includes(currentJob.status))) {
+    refreshJobStatus(activeJobId);
+  }
+}, 5000);

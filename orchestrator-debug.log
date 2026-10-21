@@ -1,0 +1,500 @@
+2026-10-12T05:20:24.088004348Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:24.091282721Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:26.962332345Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:20:26.966472152Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:20:26.966640661Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:26.969717694Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:26.972421788Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:30.625647668Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:20:30.634357599Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:20:30.635397414Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:20:30.690882860Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:20:31.936194683Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:20:31.939706657Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:20:31.939881972Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:31.942772251Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:33.844053607Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:20:33.844761695Z INFO:     172.18.0.1:59110 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:20:33.866893490Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:20:33.869400854Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:20:33.897573874Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:20:33.923052757Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:20:34.092635808Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:20:34.122598340Z INFO:     172.18.0.1:59150 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:20:34.177177232Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:20:36.166102591Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:20:36.166942017Z INFO:     172.18.0.1:59088 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:20:36.221018025Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:20:40.153204686Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:20:40.700814721Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:20:40.703261735Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:20:40.905745072Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:20:40.909674264Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:20:42.279078286Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:20:42.282745116Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:20:53.296812951Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:20:53.300029128Z INFO:services.orchestrator.app:Processing instruction candidates 0-0 of 1
+2026-10-12T05:20:53.300199435Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:57.827175864Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:20:57.830775081Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:20:57.830922096Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:57.837085355Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:59.075877922Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:20:59.079565915Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:20:59.079794110Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:20:59.082889485Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:21:02.616648757Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:21:02.621014296Z INFO:     172.18.0.1:59184 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:21:02.681848716Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:21:06.888157403Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:21:06.890767746Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:21:07.712998509Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:21:09.725731628Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:21:09.738788607Z INFO:     172.18.0.1:59150 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:21:09.793104537Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:21:13.957025786Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:21:13.961535459Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:21:13.961758349Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:21:13.964976373Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:21:13.967545268Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:21:18.562327090Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:21:18.564887077Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:21:20.438043483Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:21:20.442002461Z INFO:     172.18.0.1:59200 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:21:20.500362431Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:21:24.210327630Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:21:24.212826646Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:21:27.102043450Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:21:27.106073824Z INFO:     172.18.0.1:59110 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:21:27.160690457Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:21:32.494404002Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:21:32.498503335Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:21:32.498612884Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:21:32.501887677Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:21:32.919257412Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:21:32.923130000Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:21:32.979931356Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:21:34.014357725Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:21:34.016892092Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:21:39.141063375Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:21:39.143775284Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:22:02.468216917Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:22:02.472734878Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:22:02.472881642Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:02.476120266Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:02.478977928Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:02.763965810Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:22:02.767718401Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:22:02.767859020Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:02.776431892Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:02.778897349Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:05.732583224Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:22:05.735598184Z INFO:services.orchestrator.app:Processing instruction candidates 0-0 of 1
+2026-10-12T05:22:05.735660770Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:06.495845746Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:22:09.563921091Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:22:09.568444788Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:22:09.568620165Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:09.571774605Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:09.574578975Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:11.127906716Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:22:11.933178429Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:22:11.955146817Z INFO:     172.18.0.1:59200 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:22:12.012726336Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:22:14.775423877Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:22:14.779847695Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:22:14.838444234Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:22:16.818203476Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:22:17.548597869Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:22:17.551125432Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:22:21.852461626Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:22:21.854947976Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:22:56.372048439Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:22:56.375566942Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:22:56.375689993Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:56.378503885Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:22:56.380976587Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:00.815633551Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:01.796780128Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:05.484421704Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:05.509267708Z INFO:     172.18.0.1:59200 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:23:05.567828133Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:23:08.554542753Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:23:08.558311588Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:23:08.558422049Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:08.561231294Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:08.563647063Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:10.914453174Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:23:10.917152292Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:23:11.551662069Z ERROR:services.orchestrator.app:Instruction chunk 0-3 timed out
+2026-10-12T05:23:11.552477432Z INFO:     172.18.0.1:59126 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:23:11.607726792Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:23:14.154926694Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:14.367054956Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:17.315448288Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:17.342622628Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:23:17.398075126Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:23:19.100411900Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:23:19.102991082Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:23:22.816090835Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:23:22.818589193Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:23:33.587199209Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:23:33.591540924Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:23:33.591622199Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:33.594814318Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:33.597592775Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:39.705056341Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:39.775549342Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:40.560550072Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:23:40.564014820Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:23:40.564122360Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:40.566996627Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:40.569599046Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:23:44.149576938Z ERROR:services.orchestrator.app:Instruction chunk 0-0 timed out
+2026-10-12T05:23:44.150490845Z INFO:     172.18.0.1:59090 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:23:44.207337221Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:23:46.293614960Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:46.384888224Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:49.064002812Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:23:49.086412561Z INFO:     172.18.0.1:59126 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:23:49.142753735Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:23:50.551266105Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:23:50.553877119Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:23:52.029846320Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:23:52.032624981Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:24:01.626358306Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:24:01.629658151Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:24:01.629851204Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:01.632658095Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:11.234358594Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:24:11.259607183Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:24:11.270058424Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:24:11.329496313Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:24:14.965404514Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:24:14.969568150Z INFO:services.orchestrator.app:Processing instruction candidates 0-3 of 4
+2026-10-12T05:24:14.969711618Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:14.972532461Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:14.974846816Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:14.976888550Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:17.027221613Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:24:17.029668891Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:24:21.778590405Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:24:24.575802108Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:24:25.362445773Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:24:26.260212921Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:24:26.288295731Z INFO:     172.18.0.1:59090 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:24:26.346296152Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:24:31.816941869Z ERROR:services.orchestrator.app:Instruction chunk 0-3 timed out
+2026-10-12T05:24:31.817793192Z INFO:     172.18.0.1:59208 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:24:31.876497291Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:24:32.677028386Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:24:32.679668539Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:24:37.635226468Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:24:37.638051577Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:24:50.120352921Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:24:50.124551407Z INFO:     172.18.0.1:59126 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:24:50.177838523Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:24:57.003256448Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:24:57.005972069Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:24:57.314198042Z ERROR:services.orchestrator.app:Instruction chunk 0-1 timed out
+2026-10-12T05:24:57.315026651Z INFO:     172.18.0.1:59170 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:24:57.368122882Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:24:59.654916277Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:24:59.664468392Z INFO:services.orchestrator.app:Processing instruction candidates 0-3 of 4
+2026-10-12T05:24:59.664583877Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:59.667321829Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:59.669443725Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:24:59.671015832Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:00.755031229Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:25:00.757592214Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:25:09.527064005Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:25:09.967307124Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:25:10.224876813Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:25:10.352476007Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:25:10.381207198Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:25:10.443137339Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:25:11.618130028Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:25:11.622442786Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:25:11.622627473Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:11.625648803Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:11.628255259Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:16.089809194Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:25:17.541146623Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:25:17.543645068Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:25:19.443243428Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:25:21.822588655Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:25:21.826329143Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:25:21.826490010Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:21.829567374Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:21.832003646Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:25:53.039059511Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:25:53.042929998Z INFO:     172.18.0.1:59170 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:25:53.097141462Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:25:56.148404251Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:25:56.151099156Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:26:08.154745570Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:26:08.158196740Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:26:08.158375479Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:08.161107291Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:08.166219512Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:12.857396974Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:26:14.256390653Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:26:16.429112954Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:26:16.439588529Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:26:16.489180326Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:26:17.307785376Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:26:17.312212935Z INFO:     172.18.0.1:59126 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:26:17.373357773Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:26:19.576748605Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:26:19.579787507Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:26:23.868522690Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:26:23.871076040Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:26:31.645417086Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:26:31.648929870Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:26:31.649010726Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:31.652071218Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:36.953040908Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:26:39.391688002Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:26:39.402499668Z INFO:     172.18.0.1:59170 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:26:39.459102978Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:26:41.692676661Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:26:41.695449324Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:26:41.941102744Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:26:41.945384730Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:26:41.945444119Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:41.948536353Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:41.951137240Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:51.862764841Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:26:51.863468116Z INFO:     172.18.0.1:59140 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:26:51.919502595Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:26:53.723126282Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:26:53.725674259Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:26:59.102113255Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:26:59.106924501Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:26:59.107119318Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:59.110441014Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:26:59.113416136Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:00.406467415Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:27:00.409804520Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:27:00.409944199Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:00.412502642Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:00.414900748Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:03.122147595Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:27:05.091736383Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:27:05.306053152Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:27:05.333607699Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:27:05.389735757Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:27:06.556383938Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:27:06.560684681Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:27:06.560906567Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:06.564100426Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:06.567015407Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:27:08.627526530Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:27:08.630599391Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:27:36.755527121Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:27:36.756268591Z INFO:     172.18.0.1:59154 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:27:36.814670155Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:27:38.390052189Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:27:38.392640110Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:27:39.658352962Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:27:39.662806925Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:27:39.719019301Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:27:42.727569634Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:27:42.730564360Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:28:05.567517141Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:28:05.572194711Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:28:05.572319861Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:05.575619092Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:05.581290310Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:21.358658655Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:28:21.359543790Z INFO:     172.18.0.1:59070 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:28:21.421704582Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:28:24.489792092Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:28:24.492263778Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:28:26.274429640Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:28:26.278912643Z INFO:services.orchestrator.app:Processing instruction candidates 0-3 of 4
+2026-10-12T05:28:26.279069751Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:26.281907379Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:26.284197930Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:26.286978314Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:32.726344932Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:28:35.646922784Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:28:36.154461792Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:28:46.009430138Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:28:46.012550625Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:28:46.012697288Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:46.015370924Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:28:48.877654756Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:28:52.044650031Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:28:52.058374573Z INFO:     172.18.0.1:59070 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:28:52.116852915Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:28:54.034228192Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:28:54.036621889Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:29:30.317994561Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:29:30.322258593Z INFO:     172.18.0.1:59070 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:29:30.383385972Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:29:36.531948745Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:29:36.534724029Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:30:12.173911566Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:30:12.178249509Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:30:12.178354671Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:30:12.181383186Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:30:12.184022467Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:30:19.250368098Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:30:19.378635677Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:30:24.091560785Z ERROR:services.orchestrator.app:Instruction chunk 0-1 timed out
+2026-10-12T05:30:24.092391669Z INFO:     172.18.0.1:59108 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:30:24.148232718Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:30:26.397446559Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:30:26.400325084Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:30:31.941564609Z ERROR:services.orchestrator.app:Instruction chunk 0-1 timed out
+2026-10-12T05:30:31.942572535Z INFO:     172.18.0.1:59086 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:30:32.000269343Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:30:35.393351879Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:30:35.396336942Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:30:45.514293618Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:30:45.518067148Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:30:45.518195034Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:30:45.520944649Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:30:45.523499221Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:30:52.720040577Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:30:56.526717199Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:30:56.529506233Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:30:56.555630239Z INFO:     172.18.0.1:59108 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:30:56.615074304Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:30:59.082414947Z ERROR:services.orchestrator.app:Instruction chunk 0-1 timed out
+2026-10-12T05:30:59.083345302Z INFO:     172.18.0.1:59234 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:30:59.138166172Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:31:00.080468356Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:31:00.083049659Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:31:04.257382060Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:31:04.259878387Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:31:13.965376631Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:31:13.966279608Z INFO:     172.18.0.1:59088 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:31:14.021303195Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:31:19.921893053Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:31:19.925548388Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:31:32.502057130Z ERROR:services.orchestrator.app:Instruction chunk 0-1 timed out
+2026-10-12T05:31:32.502941996Z INFO:     172.18.0.1:59184 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:31:32.556445929Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:31:41.405424960Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:31:41.408069694Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:32:02.476015125Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:02.482455242Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:32:02.482611722Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:32:02.483733468Z INFO:     172.18.0.1:59150 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:32:02.483974433Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:02.487277890Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:02.489352684Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:02.535678404Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:32:04.309340232Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:04.313246026Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:32:04.313498768Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:04.316499218Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:04.319262992Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:04.928375186Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:04.931847498Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:32:04.932005631Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:04.934715387Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:04.937186329Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:09.571422077Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:32:09.572333744Z INFO:     172.18.0.1:59110 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:32:09.628653331Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:32:10.348178429Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:10.352202688Z INFO:     172.18.0.1:59108 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:32:10.408195540Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:32:11.407732457Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:32:11.410331624Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:32:12.706326792Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:32:12.708827013Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:32:13.965119259Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:32:13.967525449Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:32:15.791960336Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:16.169271370Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:16.252439603Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:16.278194697Z INFO:     172.18.0.1:59088 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:32:16.338730393Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:32:22.274592935Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:32:22.277681850Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:32:28.067585399Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:28.072493853Z INFO:services.orchestrator.app:Processing instruction candidates 0-3 of 4
+2026-10-12T05:32:28.072666794Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:28.075466032Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:28.084118474Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:28.086151705Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:34.728583438Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:34.891863397Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:39.662729099Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:40.786949458Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:32:40.810073020Z INFO:     172.18.0.1:59184 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:32:40.872422758Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:32:43.195465035Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:43.199933391Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:32:43.200053894Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:43.203162130Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:43.205926971Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:47.778182342Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:32:47.783710248Z INFO:services.orchestrator.app:Processing instruction candidates 0-3 of 4
+2026-10-12T05:32:47.783844294Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:47.787120310Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:47.789225312Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:47.791044749Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:32:48.468746166Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:32:48.471359965Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:33:01.057045800Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:33:01.060624795Z INFO:services.orchestrator.app:Processing instruction candidates 0-2 of 3
+2026-10-12T05:33:01.060873408Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:01.063738516Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:01.066250871Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:01.422967836Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:33:01.426220591Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:33:01.426317953Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:01.429237952Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:04.833958869Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:05.482350256Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:05.563454588Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:05.585079659Z INFO:     172.18.0.1:59110 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:33:05.641274999Z INFO:services.orchestrator.app:POST http://instruction-value-assessment:8000/assess with payload keys: ['chunk_id', 'source_file', 'content', 'chunk_index', 'total_chunks', 'metadata']
+2026-10-12T05:33:06.199437023Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:07.432332356Z INFO:httpx:HTTP Request: POST http://instruction-value-assessment:8000/assess "HTTP/1.1 200 OK"
+2026-10-12T05:33:07.434748788Z INFO:services.orchestrator.app:POST http://generate-instruction:8000/generate with payload keys: ['chunk', 'assessment', 'num_variations_per_task', 'source_language', 'target_language', 'metadata', 'anchor_text', 'generation_context', 'context_metadata', 'standalone_sft', 'telemetry_run_id']
+2026-10-12T05:33:08.613795454Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:08.625704238Z INFO:     172.18.0.1:59108 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:33:26.171197501Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:33:26.174943318Z INFO:services.orchestrator.app:Processing instruction candidates 0-1 of 2
+2026-10-12T05:33:26.175065179Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:26.178217685Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:32.382368362Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:32.875497155Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:32.888210477Z INFO:     172.18.0.1:59184 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:33:33.593597570Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:33:33.594349675Z INFO:     172.18.0.1:59200 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:33:37.514001636Z INFO:httpx:HTTP Request: POST http://generate-instruction:8000/generate "HTTP/1.1 200 OK"
+2026-10-12T05:33:37.517069355Z INFO:services.orchestrator.app:Processing instruction candidates 0-0 of 1
+2026-10-12T05:33:37.517126156Z INFO:services.orchestrator.app:POST http://translation-evaluation:8000/evaluate with payload keys: ['mode', 'id', 'source_context', 'english', 'persian', 'subject_category', 'task_category', 'metadata']
+2026-10-12T05:33:43.283847351Z INFO:httpx:HTTP Request: POST http://translation-evaluation:8000/evaluate "HTTP/1.1 200 OK"
+2026-10-12T05:33:43.287839371Z INFO:     172.18.0.1:59110 - "POST /run HTTP/1.1" 200 OK
+2026-10-12T05:35:11.625278746Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:35:11.626292821Z INFO:     172.18.0.1:59208 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:35:21.830765119Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:35:21.831779024Z INFO:     172.18.0.1:59090 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:36:41.949375469Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:36:41.950364371Z INFO:     172.18.0.1:59126 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:36:59.111192015Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:36:59.111994514Z INFO:     172.18.0.1:59170 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:37:06.564561942Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:37:06.565676473Z INFO:     172.18.0.1:59140 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:38:05.577343389Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:38:05.578397550Z INFO:     172.18.0.1:59154 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:38:26.281951232Z ERROR:services.orchestrator.app:Instruction chunk 0-3 timed out
+2026-10-12T05:38:26.283053514Z INFO:     172.18.0.1:59220 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:40:12.180887278Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:40:12.181928445Z INFO:     172.18.0.1:59070 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:42:02.486914376Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:42:02.487949778Z INFO:     172.18.0.1:59234 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:42:04.317682032Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:42:04.318571574Z INFO:     172.18.0.1:59086 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:42:43.206210859Z ERROR:services.orchestrator.app:Instruction chunk 0-2 timed out
+2026-10-12T05:42:43.207143174Z INFO:     172.18.0.1:59150 - "POST /run HTTP/1.1" 504 Gateway Timeout
+2026-10-12T05:42:47.789218400Z ERROR:services.orchestrator.app:Instruction chunk 0-3 timed out
+2026-10-12T05:42:47.790804683Z INFO:     172.18.0.1:59088 - "POST /run HTTP/1.1" 504 Gateway Timeout
