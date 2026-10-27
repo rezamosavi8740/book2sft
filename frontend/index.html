@@ -12,7 +12,7 @@
       <div>
         <p class="eyebrow">BOOK2SFT · FULL PIPELINE</p>
         <h1>تبدیل کتاب به دیتاست SFT</h1>
-        <p class="muted">PDF → OCR → Semantic Chunker → SFT Generator → Book Selection → JSONL + Review PDF</p>
+        <p class="muted">PDF / OCR JSON → (OCR فقط برای PDF) → Semantic Chunker → SFT Generator → Book Selection → JSONL + Review PDF</p>
       </div>
       <span id="health" class="pill">در حال بررسی سرویس‌ها…</span>
     </section>
@@ -20,9 +20,10 @@
     <section class="card upload-card">
       <form id="uploadForm">
         <label class="drop" for="pdfFile">
-          <strong>فایل PDF کتاب را انتخاب کنید</strong>
+          <strong>فایل PDF یا خروجی OCR با فرمت JSON را انتخاب کنید</strong>
           <span id="fileName">هنوز فایلی انتخاب نشده</span>
-          <input id="pdfFile" name="pdf_file" type="file" accept="application/pdf" required />
+          <input id="pdfFile" name="input_file" type="file" accept=".pdf,.json,application/pdf,application/json" required />
+          <small class="muted">با فایل OCR JSON، فراخوانی OCR حذف می‌شود؛ بقیه مراحل Chunker و SFT اجرا می‌شوند.</small>
         </label>
         <div class="form-grid">
           <label><span>عنوان کتاب (اختیاری)</span><input id="bookTitle" type="text" placeholder="از نام فایل استفاده می‌شود" /></label>

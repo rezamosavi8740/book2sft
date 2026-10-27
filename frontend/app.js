@@ -175,6 +175,8 @@ function render(job) {
   $("eta").textContent = seconds(job.eta_sec);
 
   const timings = job.timings || {};
+  // Keep the skipped OCR stage visible even though it is never executed.
+
   $("timings").innerHTML = Object.entries(timings).map(([name, t]) => `
     <div class="timing-row">
       <strong>${STAGE_LABELS[name] || name}</strong>
@@ -228,6 +230,10 @@ $("uploadForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const file = $("pdfFile").files?.[0];
   if (!file) return;
+  if (!/\.(pdf|json)$/i.test(file.name)) {
+    alert('فقط فایل PDF یا OCR JSON قابل قبول است.');
+    return;
+  }
   $("submitBtn").disabled = true;
   $("submitBtn").textContent = 'در حال ارسال…';
   $("downloads").classList.add("hidden");
@@ -235,7 +241,7 @@ $("uploadForm").addEventListener("submit", async (e) => {
   $("errorBox").classList.add("hidden");
   try {
     const form = new FormData();
-    form.append('pdf_file', file);
+    form.append('input_file', file);
     form.append('book_title', $("bookTitle").value || '');
     form.append('category', $("category").value || '');
     form.append('domain', $("domain").value || '');

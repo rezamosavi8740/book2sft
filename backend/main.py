@@ -115,6 +115,7 @@ STAGE_WEIGHTS = {
 
 CHUNKER_STAGE_MAP = {
     "ocr": "ocr",
+    "ocr_skipped": "normalizing",
     "normalizing": "normalizing",
     "chunking": "chunking",
     "book_plan": "book_plan",
@@ -225,6 +226,7 @@ class JobState:
     job_id: str
     filename: str
     size_bytes: int
+    input_type: str = "pdf"
     book_title: str = ""
     category: str = ""
     domain: str = "general"
@@ -262,6 +264,8 @@ class JobState:
         return {
             "job_id": self.job_id,
             "filename": self.filename,
+            "input_type": self.input_type,
+            "ocr_skipped": self.input_type == "ocr_json",
             "book_title": self.book_title,
             "category": self.category,
             "domain": self.domain,
@@ -398,6 +402,7 @@ class JobManager:
         self,
         upload: UploadFile,
         *,
+        input_type: str,
         book_title: str,
         category: str,
         domain: str,
@@ -406,7 +411,7 @@ class JobManager:
         job_dir = self.job_dir(job_id)
         input_dir = job_dir / "input"
         input_dir.mkdir(parents=True, exist_ok=True)
-        dest = input_dir / "book.pdf"
+        dest = input_dir / ("ocr.json" if input_type == "ocr_json" else "book.pdf")
         upload_started = time.monotonic()
         size = 0
         with dest.open("wb") as out:
@@ -421,12 +426,42 @@ class JobManager:
                     raise HTTPException(status_code=413, detail=f"File exceeds MAX_UPLOAD_MB={MAX_UPLOAD_MB}")
                 out.write(block)
 
-        filename = upload.filename or "book.pdf"
+        # Validate before queueing: malformed OCR must never reach the Chunker.
+        try:
+            if input_type == "pdf":
+                with dest.open("rb") as fh:
+                    if fh.read(5) != b"%PDF-":
+                        raise HTTPException(status_code=400, detail="Invalid PDF signature")
+            else:
+                try:
+                    with dest.open("r", encoding="utf-8-sig") as fh:
+                        obj = json.load(fh)
+                    pages = obj.get("pages") if isinstance(obj, dict) else None
+                    if not isinstance(pages, list) or not pages:
+                        raise ValueError("OCR JSON must contain a non-empty pages array")
+                    if not any(
+                        isinstance(cell, dict) and (
+                            str(cell.get("plain_text") or "").strip()
+                            or str(cell.get("text") or "").strip()
+                        )
+                        for page in pages if isinstance(page, dict)
+                        for cell in (page.get("cells") if isinstance(page.get("cells"), list)
+                                     else page.get("blocks") if isinstance(page.get("blocks"), list) else [])
+                    ):
+                        raise ValueError("OCR pages must contain text in cells or blocks")
+                except (ValueError, UnicodeError, json.JSONDecodeError) as exc:
+                    raise HTTPException(status_code=400, detail=f"Invalid OCR JSON: {exc}") from exc
+        except Exception:
+            shutil.rmtree(job_dir, ignore_errors=True)
+            raise
+
+        filename = upload.filename or ("ocr.json" if input_type == "ocr_json" else "book.pdf")
         resolved_title = book_title.strip() or Path(filename).stem
         job = JobState(
             job_id=job_id,
             filename=filename,
             size_bytes=size,
+            input_type=input_type,
             book_title=resolved_title,
             category=category.strip(),
             domain=domain.strip() or SFT_DEFAULT_DOMAIN,
@@ -437,6 +472,11 @@ class JobManager:
             "elapsed_sec": round(time.monotonic() - upload_started, 3),
             "status": "completed",
         }
+        if input_type == "ocr_json":
+            job.timings["ocr"] = {
+                "started_at": None, "finished_at": None,
+                "elapsed_sec": 0.0, "status": "skipped",
+            }
         self.jobs[job_id] = job
         await self.persist(job)
         await self.emit(job, "job_created")
@@ -487,14 +527,24 @@ class JobManager:
         await self.complete(job)
 
     async def run_chunker(self, job: JobState) -> None:
-        await self.set_stage(job, "chunker_submit", message="Submitting PDF to Chunker API", local_progress=0)
-        pdf_path = self.job_dir(job.job_id) / "input" / "book.pdf"
+        is_ocr = job.input_type == "ocr_json"
+        await self.set_stage(
+            job, "chunker_submit",
+            message="Submitting OCR JSON to Chunker API (skip OCR)" if is_ocr else "Submitting PDF to Chunker API",
+            local_progress=0,
+        )
+        input_path = self.job_dir(job.job_id) / "input" / ("ocr.json" if is_ocr else "book.pdf")
+        job.metrics.setdefault("pipeline", {}).setdefault("chunker", {})["ocr_skipped"] = is_ocr
         timeout = httpx.Timeout(CHUNKER_TIMEOUT_SEC, connect=30.0)
         async with httpx.AsyncClient(timeout=timeout) as client:
-            with pdf_path.open("rb") as fh:
+            with input_path.open("rb") as fh:
                 response = await client.post(
                     f"{CHUNKER_BASE_URL}/v1/jobs",
-                    files={"pdf_file": (job.filename, fh, "application/pdf")},
+                    files={
+                        "ocr_file" if is_ocr else "pdf_file": (
+                            job.filename, fh, "application/json" if is_ocr else "application/pdf"
+                        )
+                    },
                 )
             if response.status_code >= 400:
                 await self.fail(job, "CHUNKER_SUBMIT_FAILED", response.text)
@@ -1062,7 +1112,7 @@ class JobManager:
             sys.executable,
             str(PDF_SCRIPT),
             "--chunks", str(chunks),
-            "--book-pdf", str(book_pdf),
+            *(["--book-pdf", str(book_pdf)] if book_pdf.exists() else []),
             "--book-title", job.book_title,
             "--language", "fa",
             "--include-reference-text",
@@ -1145,6 +1195,7 @@ class JobManager:
             job_id=data["job_id"],
             filename=data["filename"],
             size_bytes=data["size_bytes"],
+            input_type=data.get("input_type", "pdf"),
             book_title=data.get("book_title", ""),
             category=data.get("category", ""),
             domain=data.get("domain", SFT_DEFAULT_DOMAIN),
@@ -1240,23 +1291,38 @@ async def index() -> HTMLResponse:
 
 @app.post("/v1/jobs", status_code=202)
 async def create_job(
-    pdf_file: UploadFile = File(...),
+    pdf_file: UploadFile | None = File(None),
+    ocr_file: UploadFile | None = File(None),
+    input_file: UploadFile | None = File(None),
     book_title: str = Form(""),
     category: str = Form(""),
     domain: str = Form(""),
 ) -> dict[str, Any]:
-    name = (pdf_file.filename or "").lower()
-    if not name.endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="Only PDF files are accepted")
-    job = await manager.create(
-        pdf_file,
-        book_title=book_title,
-        category=category,
-        domain=domain or SFT_DEFAULT_DOMAIN,
-    )
+    supplied = [f for f in (pdf_file, ocr_file, input_file) if f is not None]
+    if len(supplied) != 1:
+        raise HTTPException(status_code=422, detail="Supply exactly one of pdf_file, ocr_file, input_file")
+    upload = supplied[0]
+    ext = Path(upload.filename or "").suffix.lower()
+    if ext not in {".pdf", ".json"}:
+        raise HTTPException(status_code=415, detail="Only PDF and OCR JSON (.json) files are supported")
+    if ocr_file is not None and ext != ".json":
+        raise HTTPException(status_code=415, detail="ocr_file must contain an OCR JSON file")
+    input_type = "ocr_json" if ext == ".json" else "pdf"
+    try:
+        job = await manager.create(
+            upload,
+            input_type=input_type,
+            book_title=book_title,
+            category=category,
+            domain=domain or SFT_DEFAULT_DOMAIN,
+        )
+    finally:
+        await upload.close()
     return {
         "job_id": job.job_id,
         "status": job.status,
+        "input_type": job.input_type,
+        "ocr_skipped": job.input_type == "ocr_json",
         "status_url": f"/v1/jobs/{job.job_id}",
         "events_url": f"/v1/jobs/{job.job_id}/events",
     }
